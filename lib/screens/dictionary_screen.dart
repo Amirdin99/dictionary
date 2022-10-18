@@ -32,45 +32,88 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey,
+      // appBar: AppBar(
+      //   leading: Icon(
+      //     Icons.equalizer,
+      //     color: Colors.white,
+      //   ),
+      //   title: Text(
+      //     "Dictionary search ",
+      //     style: TextStyle(
+      //         color: Colors.white, fontSize: 24, fontWeight: FontWeight.w500),
+      //   ),
+      //   actions: [
+      //     IconButton(
+      //       onPressed: () {
+      //         if (!favourite) {
+      //           db.getFavouriteWords(query).then((value) {
+      //             setState(() {
+      //               words.clear();
+      //               words.addAll(value);
+      //             });
+      //           });
+      //           setState(() {
+      //             favourite = true;
+      //           });
+      //         } else {
+      //           db.getSelectWords(query).then((value) {
+      //             setState(() {
+      //               words.clear();
+      //               words.addAll(value);
+      //             });
+      //           });
+      //           setState(() {
+      //             favourite = true;
+      //           });
+      //         }
+      //       },
+      //       icon: Icon(
+      //         favourite ? Icons.star : Icons.star_border,
+      //         color: Colors.yellow,
+      //       ),
+      //       tooltip: 'Amirdin',
+      //     )
+      //   ],
+      //   backgroundColor: Colors.black38,
+      // ),
       appBar: AppBar(
-        title: Text(
-          "Dictionary search ",
-          style: TextStyle(
-              color: Colors.white, fontSize: 24, fontWeight: FontWeight.w500),
+        centerTitle: true,
+        title: const Text(
+          'Dictionary',
         ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              if (!favourite) {
-                db.getFavouriteWords(query).then((value) {
-                  setState(() {
-                    words.clear();
-                    words.addAll(value);
-                  });
-                });
-                setState(() {
-                  favourite = true;
-                });
-              } else {
-                db.getSelectWords(query).then((value) {
-                  setState(() {
-                    words.clear();
-                    words.addAll(value);
-                  });
-                });
-                setState(() {
-                  favourite = true;
-                });
-              }
-            },
-            icon: Icon(
-              favourite ? Icons.star : Icons.star_border,
-              color: Colors.yellow,
+        backgroundColor: const Color(0xff764abc),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Color(0xff764abc),
+              ),
+              child: Text('Drawer Header'),
             ),
-            tooltip: 'Amirdin',
-          )
-        ],
-        backgroundColor: Colors.black38,
+            ListTile(
+              leading: Icon(
+                Icons.home,
+              ),
+              title: const Text('Page 1'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.train,
+              ),
+              title: const Text('Page 2'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,

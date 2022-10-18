@@ -10,6 +10,7 @@ class SeconScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color(0xff764abc),
         title: Text('Definition'),
       ),
       body: Column(
